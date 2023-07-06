@@ -21,14 +21,12 @@
   height: 50vh;
   margin: 10px;
 }
-
 .description {
   display: flex;
   align-items: center;
   margin: 2rem;
   font-family: "PT Sans", sans-serif;
 }
-
 .input-container {
   position: relative;
   display: inline-block;
@@ -57,10 +55,6 @@
   background-color: #ff9df5;
 }
 
-.error {
-  display: inline;
-}
-
 .result {
   width: 500px;
   height: 4rem;
@@ -70,19 +64,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative; /* Add this line */
-}
-
-.success {
-  margin-right: 1rem; /* Add some margin to create space between text and icon */
+  position: relative;
 }
 
 .FaCopy {
-  color: #ffffff;
-  background-color: #ff9df5;
-  border: none;
+  /* color: #ffffff; */
   font-size: 1.5rem;
-  position: absolute; /* Position the icon relative to the .result div */
-  right: 1rem; /* Adjust the right position as needed */
-  cursor: pointer; /* Add cursor pointer for interaction */
+  margin-left: 90%;
+  /* z-index: 1; */
 }
