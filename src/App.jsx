@@ -28,9 +28,12 @@ function App() {
   const handleClick = async (url) => {
     console.log(url);
     try {
-      const response = await axios.post("http://localhost:3000/", {
-        longUrl: url,
-      });
+      const response = await axios.post(
+        "https://urlshortner-uxr5.onrender.com",
+        {
+          longUrl: url,
+        }
+      );
 
       setResult(response.data.shortUrl);
     } catch (error) {
