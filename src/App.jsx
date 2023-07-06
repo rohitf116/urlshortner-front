@@ -4,11 +4,14 @@ import { FaCopy } from "react-icons/fa";
 import Search from "./components/Search";
 import Headline from "./components/Headline";
 import SubmitButton from "./components/SubmitButton";
+import { Audio, ColorRing, Oval } from "react-loader-spinner";
+
 function App() {
   const [url, setUrl] = useState("");
   const [error, setError] = useState("");
   const [result, setResult] = useState("");
   const [copied, setCopied] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const copyToClipboard = async () => {
     try {
       await navigator.clipboard.writeText(result);
@@ -26,7 +29,7 @@ function App() {
     setUrl(e.target.value);
   };
   const handleClick = async (url) => {
-    console.log(url);
+    setIsLoading(true);
     try {
       const response = await axios.post(
         "https://urlshortner-uxr5.onrender.com",
@@ -34,9 +37,10 @@ function App() {
           longUrl: url,
         }
       );
-
+      setIsLoading(false);
       setResult(response.data.shortUrl);
     } catch (error) {
+      setIsLoading(false);
       setError(error.response.data.message);
     }
   };
@@ -53,7 +57,20 @@ function App() {
           </div>
           <div>
             <div className="result">
-              {result ? (
+              {isLoading ? (
+                <Oval
+                  height={40}
+                  width={40}
+                  color="#FFE7FD"
+                  wrapperStyle={{}}
+                  wrapperClass=""
+                  visible={true}
+                  ariaLabel="oval-loading"
+                  secondaryColor="#FFCFFA"
+                  strokeWidth={2}
+                  strokeWidthSecondary={2}
+                />
+              ) : result ? (
                 <>
                   <p className="success">{result}</p>
                   <button className="FaCopy">
